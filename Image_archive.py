@@ -21,9 +21,11 @@ class Image_archive():
         file_list=Image_archive.get_all_files(self.path_image_folder)
         
         for image_name in image_names:
-            file_path=Image_archive.find_image_in_file_list(image_name, file_list)
-            # copy file to new folder
-            shutil.copyfile(file_path, new_folder+'\\'+image_name+'.jpg')
+            try:
+                file_path=Image_archive.find_image_in_file_list(image_name, file_list)
+                # copy file to new folder
+                shutil.copyfile(file_path, new_folder+'\\'+image_name+'.jpg')
+            except: print('Some images could not be found')
 
     
     def get_filenames_from_HHVL_archive(self, person_name):
